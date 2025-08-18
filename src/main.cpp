@@ -1,21 +1,36 @@
 #include <SFML/Graphics.hpp>
+#include "imgui.h"
+#include "imgui-SFML.h"
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
+    sf::RenderWindow window(sf::VideoMode(800, 800), "CMake SFML Project");
     window.setFramerateLimit(144);
+    ImGui::SFML::Init(window);
 
+    sf::Clock deltaClock;
     while (window.isOpen())
     {
-        while (const std::optional event = window.pollEvent())
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            if (event->is<sf::Event::Closed>())
+            ImGui::SFML::ProcessEvent(window, event);
+            if (event.type == sf::Event::Closed)
             {
                 window.close();
             }
         }
 
+        ImGui::SFML::Update(window, deltaClock.restart());
+
+        ImGui::Begin("Hello, world!");
+        ImGui::Button("Look at this pretty button");
+        ImGui::End();
+
         window.clear();
+        ImGui::SFML::Render(window);
+
         window.display();
     }
+    ImGui::SFML::Shutdown();
 }
