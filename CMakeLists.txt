@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(CMakeSFMLProject LANGUAGES CXX)
+project(2D-RayCast LANGUAGES CXX)
 
 include(FetchContent)
 
