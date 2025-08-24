@@ -1,7 +1,7 @@
 # 2D Raytracing Simulation
 
 A simple real-time 2D raytracing simulation built with C++ and SFML.
-
+![til](https://raw.githubusercontent.com/shujaK/2D-RayCasting/refs/heads/main/demo.gif)
 ## Features
 
 - Move the mouse to control the light source position
