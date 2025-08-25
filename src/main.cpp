@@ -1,28 +1,32 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <limits>
 #include <vector>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-#include "Colours.h"
 #include "Wall.h"
-#include "Ray.h"
 #include "Eye.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 800), "2D Raycast (Press D to clear walls)");
     window.setFramerateLimit(144);
-    window.setMouseCursorVisible(false);
+    // window.setMouseCursorVisible(false);
 
     // create eye with 2 degree ray spacing
-    Eye eye({ 100.0f, 100.0f }, 2.0f);
+    Eye eye({ 100.0f, 100.0f }, 1.0f);
 
     // initialize walls container with one default wall
     std::vector<Wall> walls;
     walls.emplace_back(Wall({ 400.0f, 200.0f }, { 400.0f, 600.0f }));
 
+    // top wall
+    walls.emplace_back(Wall({ 2.0f, 2.0f }, { 798.0f, 2.0f }));
+    // right wall  
+    walls.emplace_back(Wall({ 798.0f, 2.0f }, { 798.0f, 798.0f }));
+    // bottom wall
+    walls.emplace_back(Wall({ 798.0f, 798.0f }, { 2.0f, 798.0f }));
+    // left wall
+    walls.emplace_back(Wall({ 2.0f, 798.0f }, { 2.0f, 2.0f }));
     // vertex array for drawing new walls
     sf::VertexArray newWallVa(sf::PrimitiveType::Lines);
     newWallVa.resize(2);
@@ -50,6 +54,15 @@ int main()
                 if (event.key.code == sf::Keyboard::D)
                 {
                     walls.clear();
+                    // top wall
+                    walls.emplace_back(Wall({ 2.0f, 2.0f }, { 798.0f, 2.0f }));
+                    // right wall  
+                    walls.emplace_back(Wall({ 798.0f, 2.0f }, { 798.0f, 798.0f }));
+                    // bottom wall
+                    walls.emplace_back(Wall({ 798.0f, 798.0f }, { 2.0f, 798.0f }));
+                    // left wall
+                    walls.emplace_back(Wall({ 2.0f, 798.0f }, { 2.0f, 2.0f }));
+
                 }
             }
 
@@ -78,15 +91,18 @@ int main()
         }
 
         // draw all existing walls
-        for (auto& w : walls)
+        if (!drawRays)
         {
-            w.draw(window);
+            for (auto& w : walls)
+            {
+                w.draw(window);
+            }
         }
 
         // update eye position and calculate ray intersections
-        eye.move(mousePosF);
+        eye.move(mousePosF, walls);
         eye.intersectRays(walls);
-        if (drawRays) eye.draw(window);
+        if (drawRays) eye.drawSmooth(window);
 
         window.display();
     }
