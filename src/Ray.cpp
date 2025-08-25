@@ -3,18 +3,22 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include "Colours.h"
-#define PI_180 M_PI / 180
 #define INF_VEC {std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity()}
 
 Ray::Ray(sf::Vector2f p, float a) : pos(p), angle(a) 
 {
-    dir.x = std::cos(PI_180 * a);
-    dir.y = std::sin(PI_180 * a);
+    dir.x = std::cos(a);
+    dir.y = std::sin(a);
 
     col = Colours::colour2;
     hits = false;
     hitPos = INF_VEC;
     distSq = std::numeric_limits<float>::infinity();
+}
+
+Ray::Ray(sf::Vector2f p) : pos(p)
+{
+    col = Colours::colour3;
 }
 
 sf::Vector2f Ray::intersect(Wall w)
@@ -58,4 +62,5 @@ sf::Vector2f Ray::intersect(Wall w)
     {
         return INF_VEC;
     }
+
 }

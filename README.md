@@ -1,6 +1,7 @@
 # 2D Raytracing Simulation
 
-A simple real-time 2D raytracing simulation built with C++ and SFML.
+A simple real-time 2D raytracing simulation built with C++ and SFML. 
+This branch has continuous lighting in the form of a polygon
 ![til](https://raw.githubusercontent.com/shujaK/2D-RayCasting/refs/heads/main/demo.gif)
 ## Features
 
