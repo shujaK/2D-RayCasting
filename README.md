@@ -1,9 +1,12 @@
 # 2D Raytracing Simulation
 
-A simple real-time 2D raytracing simulation built with C++ and SFML.
-![til](https://raw.githubusercontent.com/shujaK/2D-RayCasting/refs/heads/main/demo.gif)
-## Features
+A simple real-time 2D raytracing simulation built with C++ and SFML.      
+![til](https://github.com/shujaK/2D-RayCasting/blob/smooth-shadows/smooth_demo.gif)         
 
+![til](https://raw.githubusercontent.com/shujaK/2D-RayCasting/refs/heads/main/demo.gif)   
+    
+## Features
+There are 2 branches, main has the naive ray casting method, smooth-shadows has the polygon method
 - Move the mouse to control the light source position
 - Click and drag to create walls that block light rays
 
