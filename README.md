@@ -1,8 +1,12 @@
 # 2D Raytracing Simulation
 
-A simple real-time 2D raytracing simulation built with C++ and SFML. 
+A simple real-time 2D raytracing simulation built with C++ and SFML.    
+
 This branch has continuous lighting in the form of a polygon
-![til](https://raw.githubusercontent.com/shujaK/2D-RayCasting/refs/heads/main/demo.gif)
+![til](https://github.com/shujaK/2D-RayCasting/blob/smooth-shadows/smooth_demo.gif)     
+
+
+Inspired by: https://ncase.me/sight-and-light/
 ## Features
 
 - Move the mouse to control the light source position
